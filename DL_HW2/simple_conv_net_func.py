@@ -113,7 +113,7 @@ def relu_scalar(a, device):
 
 
 def relu_vector(a, device):
-    return np.maximum(a, 0)
+    return torch.clamp(a, min = 0)
 
 
 def reshape_vector(a, device):
@@ -139,7 +139,7 @@ def fc_layer_vector(a, weight, bias, device):
     batch_size = a.shape[0]
     output_length = weight.shape[0]
     output = np.full((batch_size, output_length), np.nan, dtype=np.float32)
+    output = torch.from_numpy(output)
     for n in range(batch_size):
-        output[n] = weight.detach().numpy() @ a[n].detach().numpy() + bias.detach().numpy()
-
-    return torch.tensor(output, dtype=torch.float32)
+        output[n] = torch.matmul(weight, a[n]) + bias
+    return output
