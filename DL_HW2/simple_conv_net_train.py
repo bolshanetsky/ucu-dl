@@ -6,8 +6,8 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torchvision import datasets, transforms
 from simple_conv_net_func import diff_mse
-from simple_conv_net_func_tensors import conv2d_scalar, pool2d_scalar, relu_scalar, fc_layer_scalar
-from simple_conv_net_func_tensors import conv2d_vector, pool2d_vector, relu_vector, fc_layer_vector
+from simple_conv_net_func import conv2d_scalar, pool2d_scalar, relu_scalar, fc_layer_scalar
+from simple_conv_net_func import conv2d_vector, pool2d_vector, relu_vector, fc_layer_vector
 
 
 class SimpleConvNet(nn.Module):
